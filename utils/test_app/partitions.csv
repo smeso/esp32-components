@@ -1,0 +1,9 @@
+# Name,   Type, SubType, Offset,  Size, Flags
+# Note: if you have increased the bootloader size, make sure to update the offsets to avoid overlap
+# The QEMU flash image (run-qemu-tests*.sh merge-bin --pad-to-size=2MB) is
+# 2 MB, and coverage builds (extra esp_gcov runtime plus --coverage
+# instrumentation) can grow past the default 1 MB factory partition, so give
+# the factory app the whole remaining flash.
+nvs,      data, nvs,     ,        0x6000,
+phy_init, data, phy,     ,        0x1000,
+factory,  app,  factory, ,        0x1F0000,

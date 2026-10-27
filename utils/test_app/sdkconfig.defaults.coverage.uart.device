@@ -1,0 +1,23 @@
+# Coverage build for real devices that have no JTAG and only one UART wired
+# to the host (plumbing/run-device-tests-coverage-uart.sh). The console is
+# disabled so the whole main UART (UART0) is free for the gcov apptrace
+# channel: CONFIG_ESP_CONSOLE_NONE makes CONFIG_ESP_CONSOLE_UART_NUM -1, which
+# is what app_trace.c checks before allowing the apptrace UART to take UART0.
+# test_runner.cpp overrides esp_apptrace_get_user_params() to use UART0 with
+# its default pins (U0TXD_GPIO_NUM / U0RXD_GPIO_NUM), so the dump comes out of
+# the UART wired to the host. The same UART also carries the doctest status
+# markers, which test_runner.cpp sends through the apptrace channel because
+# the console output is gone.
+CONFIG_ESP_CONSOLE_NONE=y
+
+CONFIG_ESP_TRACE_ENABLE=y
+CONFIG_ESP_TRACE_LIB_NONE=y
+CONFIG_ESP_TRACE_TRANSPORT_APPTRACE=y
+CONFIG_APPTRACE_DEST_UART=y
+CONFIG_APPTRACE_DEST_UART_NUM=0
+CONFIG_APPTRACE_UART_BAUDRATE=1000000
+CONFIG_APPTRACE_UART_TX_BUFF_SIZE=4096
+CONFIG_APPTRACE_UART_TX_MSG_SIZE=4096
+CONFIG_ESP_GCOV_ENABLE=y
+CONFIG_ESP_DEBUG_STUBS_ENABLE=y
+CONFIG_ESP_IPC_ENABLE=y

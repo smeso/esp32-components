@@ -1,0 +1,12 @@
+version: "1.0.0"
+description: Header-only C++ xoroshiro128++ pseudo-random number generator
+maintainers:
+  - Salvatore Mesoraca <s.mesoraca16@gmail.com>
+license: "Apache-2.0"
+tags:
+  - random
+  - prng
+  - xoroshiro
+  - cpp
+dependencies:
+  idf: ">=6.0"

@@ -1,0 +1,99 @@
+# SPDX-FileCopyrightText: 2025 Salvatore Mesoraca <s.mesoraca16@gmail.com>
+# SPDX-License-Identifier: Apache-2.0
+
+menu "ES8311 single tune example"
+
+    config SINGLE_TUNE_I2C_SDA_GPIO
+        int "I2C SDA GPIO number"
+        default 11
+        help
+            GPIO number connected to the ES8311 I2C SDA line.
+
+    config SINGLE_TUNE_I2C_SCL_GPIO
+        int "I2C SCL GPIO number"
+        default 10
+        help
+            GPIO number connected to the ES8311 I2C SCL line.
+
+    config SINGLE_TUNE_I2C_ADDR
+        int "ES8311 I2C address"
+        default 24
+        range 24 25
+        help
+            I2C address of the ES8311 (0x18 = 24 or 0x19 = 25).
+
+    config SINGLE_TUNE_I2C_CLK_SPEED
+        int "I2C clock speed (Hz)"
+        default 100000
+        help
+            I2C SCL clock speed in Hz used to talk to the ES8311.
+
+    config SINGLE_TUNE_I2S_MCLK_GPIO
+        int "I2S MCLK GPIO number"
+        default 12
+        help
+            GPIO number for the I2S master clock (MCLK).
+
+    config SINGLE_TUNE_I2S_BCLK_GPIO
+        int "I2S BCLK GPIO number"
+        default 13
+        help
+            GPIO number for the I2S bit clock (BCLK).
+
+    config SINGLE_TUNE_I2S_WS_GPIO
+        int "I2S WS GPIO number"
+        default 14
+        help
+            GPIO number for the I2S word select (WS / LRCK).
+
+    config SINGLE_TUNE_I2S_DOUT_GPIO
+        int "I2S data out GPIO number"
+        default 16
+        help
+            GPIO number for the I2S data output (DAC data).
+
+    choice SINGLE_TUNE_BITS
+        prompt "I2S bits per sample"
+        default SINGLE_TUNE_BITS_16
+
+        config SINGLE_TUNE_BITS_16
+            bool "16 bit"
+
+        config SINGLE_TUNE_BITS_32
+            bool "32 bit"
+    endchoice
+
+    choice SINGLE_TUNE_MCLK_MULTIPLE
+        prompt "MCLK multiple"
+        default SINGLE_TUNE_MCLK_MULTIPLE_512
+
+        config SINGLE_TUNE_MCLK_MULTIPLE_256
+            bool "256"
+
+        config SINGLE_TUNE_MCLK_MULTIPLE_384
+            bool "384"
+
+        config SINGLE_TUNE_MCLK_MULTIPLE_512
+            bool "512"
+
+        config SINGLE_TUNE_MCLK_MULTIPLE_768
+            bool "768"
+
+        config SINGLE_TUNE_MCLK_MULTIPLE_1024
+            bool "1024"
+    endchoice
+
+    config SINGLE_TUNE_SAMPLE_RATE
+        int "Sample rate (Hz)"
+        default 16000
+        help
+            Sample rate in Hz. The ES8311 driver supports a fixed set of
+            rates; unsupported combinations will fail at runtime.
+
+    config SINGLE_TUNE_PLAY_SECONDS
+        int "Playback duration (s)"
+        default 10
+        help
+            How long the tune is played before the example stops.
+
+endmenu

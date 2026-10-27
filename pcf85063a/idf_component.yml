@@ -1,0 +1,12 @@
+version: "1.0.0"
+description: C++ driver for the NXP PCF85063A real-time clock (RTC) over I2C
+maintainers:
+  - Salvatore Mesoraca <s.mesoraca16@gmail.com>
+license: "Apache-2.0"
+tags:
+  - rtc
+  - clock
+  - i2c
+  - cpp
+dependencies:
+  idf: ">=6.0"

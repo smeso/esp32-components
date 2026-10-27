@@ -1,0 +1,13 @@
+version: "1.0.0"
+description: Header-only C++ STL-compatible allocator that places containers in SPI RAM
+maintainers:
+  - Salvatore Mesoraca <s.mesoraca16@gmail.com>
+license: "Apache-2.0"
+tags:
+  - memory
+  - psram
+  - spiram
+  - allocator
+  - cpp
+dependencies:
+  idf: ">=6.0"

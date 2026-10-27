@@ -1,0 +1,14 @@
+version: "1.0.0"
+description: C++ driver for the ES8311 low-power audio codec with integrated I2S interface
+maintainers:
+  - Salvatore Mesoraca <s.mesoraca16@gmail.com>
+license: "Apache-2.0"
+tags:
+  - audio
+  - codec
+  - dac
+  - adc
+  - i2s
+  - i2c
+dependencies:
+  idf: ">=6.0"

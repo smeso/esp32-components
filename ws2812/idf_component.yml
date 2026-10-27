@@ -1,0 +1,12 @@
+version: "1.0.0"
+description: C++ driver for WS2812 addressable RGB LED strips over RMT
+maintainers:
+  - Salvatore Mesoraca <s.mesoraca16@gmail.com>
+license: "Apache-2.0"
+tags:
+  - ws2812
+  - led
+  - rmt
+  - cpp
+dependencies:
+  idf: ">=6.0"

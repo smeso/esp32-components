@@ -1,0 +1,2 @@
+# The button driver throws C++ exceptions.
+CONFIG_COMPILER_CXX_EXCEPTIONS=y

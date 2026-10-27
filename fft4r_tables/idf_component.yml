@@ -1,0 +1,12 @@
+version: "1.0.0"
+description: Header-only C++ resettable singleton that owns the esp-dsp radix-4 FFT twiddle tables
+maintainers:
+  - Salvatore Mesoraca <s.mesoraca16@gmail.com>
+license: "Apache-2.0"
+tags:
+  - audio
+  - dsp
+  - fft
+  - cpp
+dependencies:
+  idf: ">=6.0"

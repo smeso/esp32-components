@@ -1,0 +1,26 @@
+# SPDX-FileCopyrightText: 2025 Salvatore Mesoraca <s.mesoraca16@gmail.com>
+# SPDX-License-Identifier: Apache-2.0
+
+menu "Button press counter example"
+
+    config PRESS_COUNTER_GPIO
+        int "Button GPIO number"
+        default 0
+        help
+            GPIO number connected to the button.
+
+    config PRESS_COUNTER_ACTIVE_LOW
+        bool "Button is active-low"
+        default y
+        help
+            Enable when the button reads low when pressed (the usual wiring
+            with a pull-up resistor).
+
+    config PRESS_COUNTER_LONG_PRESS_MS
+        int "Long-press threshold (ms)"
+        default 1000
+        help
+            How long the button must be held for the press to count as a
+            long press.
+
+endmenu

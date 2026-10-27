@@ -1,0 +1,12 @@
+version: "1.0.0"
+description: Header-only C++ LED effects for addressable RGB strips
+maintainers:
+  - Salvatore Mesoraca <s.mesoraca16@gmail.com>
+license: "Apache-2.0"
+tags:
+  - led
+  - effects
+  - ws2812
+  - cpp
+dependencies:
+  idf: ">=6.0"

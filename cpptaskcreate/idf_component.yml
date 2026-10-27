@@ -1,0 +1,11 @@
+version: "1.0.0"
+description: Header-only C++ drop-in replacement for xTaskCreate() that runs any callable in a FreeRTOS task
+maintainers:
+  - Salvatore Mesoraca <s.mesoraca16@gmail.com>
+license: "Apache-2.0"
+tags:
+  - freertos
+  - task
+  - cpp
+dependencies:
+  idf: ">=6.0"

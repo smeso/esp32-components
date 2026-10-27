@@ -1,0 +1,13 @@
+version: "1.0.0"
+description: C++ driver for the ES7210 quad-channel ADC with I2S output
+maintainers:
+  - Salvatore Mesoraca <s.mesoraca16@gmail.com>
+license: "Apache-2.0"
+tags:
+  - audio
+  - codec
+  - adc
+  - i2s
+  - i2c
+dependencies:
+  idf: ">=6.0"

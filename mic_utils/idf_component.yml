@@ -1,0 +1,12 @@
+version: "1.0.0"
+description: Header-only C++ helpers for microphone/silence detection on interleaved audio buffers
+maintainers:
+  - Salvatore Mesoraca <s.mesoraca16@gmail.com>
+license: "Apache-2.0"
+tags:
+  - audio
+  - mic
+  - silence
+  - cpp
+dependencies:
+  idf: ">=6.0"

@@ -1,0 +1,18 @@
+menu "cpptaskcreate"
+
+    config CPPTASKCREATE_TLS_INDEX
+        int "Thread local storage pointer index of the task callable"
+        range 1 15
+        default 1
+        help
+            FreeRTOS thread local storage pointer index at which
+            cppTaskCreate() registers each task's callable, so that FreeRTOS
+            can free it when the task is deleted. Index 0 is reserved by
+            ESP-IDF for the pthreads API (the C++ exception machinery reads
+            it), so it cannot be used. Raise this value if index 1 is already
+            taken by another component: two components that share an index
+            silently overwrite each other's pointer and deletion callback.
+            The value must stay below
+            CONFIG_FREERTOS_THREAD_LOCAL_STORAGE_POINTERS.
+
+endmenu

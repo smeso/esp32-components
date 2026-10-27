@@ -1,0 +1,30 @@
+# SPDX-FileCopyrightText: 2025 Salvatore Mesoraca <s.mesoraca16@gmail.com>
+# SPDX-License-Identifier: Apache-2.0
+
+menu "PCF85063A RTC datetime example"
+
+    config RTC_DATETIME_I2C_SDA_GPIO
+        int "I2C SDA GPIO number"
+        default 11
+        help
+            GPIO number connected to the PCF85063A I2C SDA line.
+
+    config RTC_DATETIME_I2C_SCL_GPIO
+        int "I2C SCL GPIO number"
+        default 10
+        help
+            GPIO number connected to the PCF85063A I2C SCL line.
+
+    config RTC_DATETIME_I2C_CLK_SPEED
+        int "I2C clock speed (Hz)"
+        default 100000
+        help
+            I2C SCL clock speed in Hz used to talk to the PCF85063A.
+
+    config RTC_DATETIME_PRINT_PERIOD_MS
+        int "Print period (ms)"
+        default 1000
+        help
+            How often the current RTC time is printed.
+
+endmenu

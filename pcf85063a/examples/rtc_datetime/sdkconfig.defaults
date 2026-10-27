@@ -1,0 +1,2 @@
+# The pcf85063a driver throws C++ exceptions.
+CONFIG_COMPILER_CXX_EXCEPTIONS=y

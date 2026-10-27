@@ -1,0 +1,13 @@
+version: "1.0.0"
+description: C++ debounced push-button driver with press, release and long-press callbacks
+maintainers:
+  - Salvatore Mesoraca <s.mesoraca16@gmail.com>
+license: "Apache-2.0"
+tags:
+  - gpio
+  - button
+  - debounce
+  - freertos
+  - cpp
+dependencies:
+  idf: ">=6.0"

@@ -1,0 +1,25 @@
+# SPDX-FileCopyrightText: 2025 Salvatore Mesoraca <s.mesoraca16@gmail.com>
+# SPDX-License-Identifier: Apache-2.0
+
+menu "mic_utils detect_silence example"
+
+    config DETECT_SILENCE_SAMPLE_RATE
+        int "Sample rate (Hz)"
+        default 16000
+        help
+            Sample rate of the generated audio.
+
+    config DETECT_SILENCE_SECONDS
+        int "Silence duration (s)"
+        default 2
+        help
+            Duration of the silent tail and of the detection window.
+
+    config DETECT_SILENCE_THRESHOLD
+        string "Silence threshold"
+        default "0.001"
+        help
+            Maximum normalized RMS level considered silent. Entered as a
+            string because Kconfig has no floating-point type.
+
+endmenu

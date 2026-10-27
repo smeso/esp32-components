@@ -1,0 +1,6 @@
+# The tca9555 driver throws std::exception-derived errors on I2C failures.
+CONFIG_COMPILER_CXX_EXCEPTIONS=y
+# cppTaskCreate() keeps each task's callable at thread local storage index 1:
+# index 0 is reserved by ESP-IDF for the pthreads API, which the C++ exception
+# machinery uses. Two pointers are therefore required.
+CONFIG_FREERTOS_THREAD_LOCAL_STORAGE_POINTERS=2

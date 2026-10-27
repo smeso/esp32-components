@@ -1,0 +1,4 @@
+# Suppress clang-tidy diagnostics originating from third-party code that is
+# not part of this project: the ESP-IDF framework itself and the vendored
+# doctest.h single-header test framework.
+ExcludeHeaderFilterRegex: '(esp-idf|doctest\.h)'

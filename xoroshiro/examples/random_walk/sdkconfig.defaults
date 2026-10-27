@@ -1,0 +1,3 @@
+# The example builds a C++ std::normal_distribution on top of the
+# UniformRandomBitGenerator interface, which requires C++ exceptions.
+CONFIG_COMPILER_CXX_EXCEPTIONS=y

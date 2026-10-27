@@ -1,0 +1,110 @@
+# SPDX-FileCopyrightText: 2025 Salvatore Mesoraca <s.mesoraca16@gmail.com>
+# SPDX-License-Identifier: Apache-2.0
+
+menu "ES7210 record audio example"
+
+    config RECORD_AUDIO_I2C_SDA_GPIO
+        int "I2C SDA GPIO number"
+        default 11
+        help
+            GPIO number connected to the ES7210 I2C SDA line.
+
+    config RECORD_AUDIO_I2C_SCL_GPIO
+        int "I2C SCL GPIO number"
+        default 10
+        help
+            GPIO number connected to the ES7210 I2C SCL line.
+
+    config RECORD_AUDIO_I2C_ADDR
+        int "ES7210 I2C address"
+        default 64
+        range 64 67
+        help
+            I2C address of the ES7210 (0x40 = 64 to 0x43 = 67).
+
+    config RECORD_AUDIO_I2C_CLK_SPEED
+        int "I2C clock speed (Hz)"
+        default 100000
+        help
+            I2C SCL clock speed in Hz used to talk to the ES7210.
+
+    config RECORD_AUDIO_I2S_MCLK_GPIO
+        int "I2S MCLK GPIO number"
+        default 12
+        help
+            GPIO number for the I2S master clock (MCLK).
+
+    config RECORD_AUDIO_I2S_BCLK_GPIO
+        int "I2S BCLK GPIO number"
+        default 13
+        help
+            GPIO number for the I2S bit clock (BCLK).
+
+    config RECORD_AUDIO_I2S_WS_GPIO
+        int "I2S WS GPIO number"
+        default 14
+        help
+            GPIO number for the I2S word select (WS / LRCK).
+
+    config RECORD_AUDIO_I2S_DIN_GPIO
+        int "I2S data in GPIO number"
+        default 15
+        help
+            GPIO number for the I2S data input (ADC data).
+
+    choice RECORD_AUDIO_BITS
+        prompt "I2S bits per sample"
+        default RECORD_AUDIO_BITS_16
+
+        config RECORD_AUDIO_BITS_16
+            bool "16 bit"
+
+        config RECORD_AUDIO_BITS_32
+            bool "32 bit"
+    endchoice
+
+    choice RECORD_AUDIO_MCLK_MULTIPLE
+        prompt "MCLK multiple"
+        default RECORD_AUDIO_MCLK_MULTIPLE_256
+
+        config RECORD_AUDIO_MCLK_MULTIPLE_256
+            bool "256"
+
+        config RECORD_AUDIO_MCLK_MULTIPLE_384
+            bool "384"
+
+        config RECORD_AUDIO_MCLK_MULTIPLE_512
+            bool "512"
+
+        config RECORD_AUDIO_MCLK_MULTIPLE_768
+            bool "768"
+
+        config RECORD_AUDIO_MCLK_MULTIPLE_1024
+            bool "1024"
+    endchoice
+
+    config RECORD_AUDIO_SAMPLE_RATE
+        int "Sample rate (Hz)"
+        default 16000
+        help
+            Sample rate in Hz. The ES7210 driver supports a fixed set of
+            rates; unsupported combinations will fail at runtime.
+
+    config RECORD_AUDIO_RECORD_SECONDS
+        int "Recording duration (s)"
+        default 5
+        help
+            How many seconds of audio are recorded before the example prints
+            a summary and stops.
+
+    config RECORD_AUDIO_MIC_MASK
+        hex "Selected microphones (bitmask of MIC1..MIC4)"
+        default 0x3
+        help
+            Bitmask of the microphones to enable (0x1 = MIC1, 0x2 = MIC2,
+            0x4 = MIC3, 0x8 = MIC4). The example configures the I2S channel
+            in stereo mode, so it fits two microphones; with three or more
+            microphones the driver switches the ES7210 to TDM mode, which
+            requires a matching TDM I2S configuration.
+
+endmenu

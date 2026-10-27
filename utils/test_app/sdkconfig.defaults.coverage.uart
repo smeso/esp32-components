@@ -1,0 +1,28 @@
+# Coverage build for QEMU (plumbing/run-qemu-tests-coverage.sh): keep the
+# console on the main UART (UART0) so the doctest output (including
+# "[doctest] Status: SUCCESS!") stays visible, and put the gcov apptrace
+# channel on UART1 with GPIO 4/5. GPIO 12/13 (the apptrace Kconfig defaults)
+# cannot be used because on ESP32-C3/C2 they are the SPI flash HD/WP pins,
+# which esp_mspi_pin_reserve() claims before the apptrace initializes. GPIO
+# 4/5 are free on every QEMU-supported target. QEMU exposes UART0 on its first
+# -serial line and UART1 on the second one, which is what collect_gcov_qemu.py
+# connects to. test_runner.cpp overrides esp_apptrace_get_user_params() to use
+# CONFIG_APPTRACE_DEST_UART_NUM / CONFIG_APPTRACE_UART_TX_GPIO /
+# CONFIG_APPTRACE_UART_RX_GPIO (UART1, GPIO 4/5) for the same reason. The
+# single-UART real-device flow (run-device-tests-coverage-uart.sh) cannot use
+# this configuration and has its own sdkconfig.defaults.coverage.uart.device.
+CONFIG_ESP_CONSOLE_UART_DEFAULT=y
+
+CONFIG_ESP_TRACE_ENABLE=y
+CONFIG_ESP_TRACE_LIB_NONE=y
+CONFIG_ESP_TRACE_TRANSPORT_APPTRACE=y
+CONFIG_APPTRACE_DEST_UART=y
+CONFIG_APPTRACE_DEST_UART_NUM=1
+CONFIG_APPTRACE_UART_TX_GPIO=4
+CONFIG_APPTRACE_UART_RX_GPIO=5
+CONFIG_APPTRACE_UART_BAUDRATE=1000000
+CONFIG_APPTRACE_UART_TX_BUFF_SIZE=4096
+CONFIG_APPTRACE_UART_TX_MSG_SIZE=4096
+CONFIG_ESP_GCOV_ENABLE=y
+CONFIG_ESP_DEBUG_STUBS_ENABLE=y
+CONFIG_ESP_IPC_ENABLE=y

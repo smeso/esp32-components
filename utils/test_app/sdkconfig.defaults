@@ -1,0 +1,23 @@
+CONFIG_APP_REPRODUCIBLE_BUILD=y
+CONFIG_APP_EXCLUDE_PROJECT_VER_VAR=y
+# The QEMU/device test builds can link more code than the default 1 MB factory
+# app partition holds (coverage adds the esp_gcov runtime plus --coverage
+# instrumentation), so use the project's own partitions.csv with a factory
+# partition that spans the whole 2 MB flash image.
+CONFIG_PARTITION_TABLE_CUSTOM=y
+CONFIG_PARTITION_TABLE_CUSTOM_FILENAME="partitions.csv"
+CONFIG_COMPILER_OPTIMIZATION_SIZE=y
+CONFIG_COMPILER_CXX_EXCEPTIONS=y
+CONFIG_COMPILER_CXX_EXCEPTIONS_EMG_POOL_SIZE=512
+CONFIG_COMPILER_STACK_CHECK_MODE_ALL=y
+CONFIG_COMPILER_WARN_WRITE_STRINGS=y
+CONFIG_COMPILER_STATIC_ANALYZER=y
+CONFIG_COMPILER_DISABLE_DEFAULT_ERRORS=n
+CONFIG_ESP_MAIN_TASK_STACK_SIZE=4096
+CONFIG_FREERTOS_TIMER_TASK_STACK_DEPTH=4096
+# cppTaskCreate() keeps each task's callable at thread local storage index 1:
+# index 0 is reserved by ESP-IDF for the pthreads API, which the C++ exception
+# machinery uses. Two pointers are therefore required.
+CONFIG_FREERTOS_THREAD_LOCAL_STORAGE_POINTERS=2
+CONFIG_FREERTOS_WATCHPOINT_END_OF_STACK=y
+CONFIG_HEAP_POISONING_COMPREHENSIVE=y

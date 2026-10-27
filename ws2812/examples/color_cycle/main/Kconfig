@@ -1,0 +1,32 @@
+# SPDX-FileCopyrightText: 2025 Salvatore Mesoraca <s.mesoraca16@gmail.com>
+# SPDX-License-Identifier: Apache-2.0
+
+menu "WS2812 color cycle example"
+
+    config COLOR_CYCLE_GPIO
+        int "WS2812 data GPIO number"
+        default 38 if IDF_TARGET_ESP32S3
+        default 18
+        help
+            GPIO number connected to the WS2812 data line. Defaults to
+            GPIO 38 on ESP32-S3 and to GPIO 18 on other targets.
+
+    config COLOR_CYCLE_NUM_LEDS
+        int "Number of LEDs in the strip"
+        default 7
+        help
+            Number of WS2812 LEDs connected to the data line.
+
+    config COLOR_CYCLE_INTERVAL_MS
+        int "Update interval (ms)"
+        default 200
+        help
+            How long each color is shown before the next one.
+
+    config COLOR_CYCLE_STEPS
+        int "Number of steps per color"
+        default 64
+        help
+            Number of brightness steps used to fade each color in and out.
+
+endmenu

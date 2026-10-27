@@ -1,0 +1,11 @@
+# The es7210, ws2812 and sound_driven drivers throw C++ exceptions.
+CONFIG_COMPILER_CXX_EXCEPTIONS=y
+CONFIG_COMPILER_CXX_EXCEPTIONS_EMG_POOL_SIZE=512
+# cppTaskCreate() keeps each task's callable at thread local storage index 1:
+# index 0 is reserved by ESP-IDF for the pthreads API, which the C++ exception
+# machinery uses. Two pointers are therefore required.
+CONFIG_FREERTOS_THREAD_LOCAL_STORAGE_POINTERS=2
+CONFIG_SPIRAM=y
+CONFIG_SPIRAM_MODE_OCT=y
+CONFIG_SPIRAM_USE_CAPS_ALLOC=y
+CONFIG_SPIRAM_IGNORE_NOTFOUND=y

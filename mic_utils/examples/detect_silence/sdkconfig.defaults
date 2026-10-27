@@ -1,0 +1,2 @@
+# has_silence() throws std::out_of_range for invalid channel indices.
+CONFIG_COMPILER_CXX_EXCEPTIONS=y

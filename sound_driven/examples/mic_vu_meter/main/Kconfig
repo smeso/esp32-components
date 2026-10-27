@@ -1,0 +1,75 @@
+# SPDX-FileCopyrightText: 2025 Salvatore Mesoraca <s.mesoraca16@gmail.com>
+# SPDX-License-Identifier: Apache-2.0
+
+menu "Sound driven mic VU meter example"
+
+    config MIC_VU_METER_I2C_SDA_GPIO
+        int "I2C SDA GPIO number"
+        default 11
+        help
+            GPIO number connected to the ES7210 I2C SDA line.
+
+    config MIC_VU_METER_I2C_SCL_GPIO
+        int "I2C SCL GPIO number"
+        default 10
+        help
+            GPIO number connected to the ES7210 I2C SCL line.
+
+    config MIC_VU_METER_I2C_ADDR
+        int "ES7210 I2C address"
+        default 64
+        range 64 67
+        help
+            I2C address of the ES7210 (0x40 = 64 to 0x43 = 67).
+
+    config MIC_VU_METER_I2C_CLK_SPEED
+        int "I2C clock speed (Hz)"
+        default 100000
+        help
+            I2C SCL clock speed in Hz used to talk to the ES7210.
+
+    config MIC_VU_METER_I2S_MCLK_GPIO
+        int "I2S MCLK GPIO number"
+        default 12
+        help
+            GPIO number for the I2S master clock (MCLK).
+
+    config MIC_VU_METER_I2S_BCLK_GPIO
+        int "I2S BCLK GPIO number"
+        default 13
+        help
+            GPIO number for the I2S bit clock (BCLK).
+
+    config MIC_VU_METER_I2S_WS_GPIO
+        int "I2S WS GPIO number"
+        default 14
+        help
+            GPIO number for the I2S word select (WS / LRCK).
+
+    config MIC_VU_METER_I2S_DIN_GPIO
+        int "I2S data in GPIO number"
+        default 15
+        help
+            GPIO number for the I2S data input (ADC data).
+
+    config MIC_VU_METER_I2S_MCLK_MULTIPLE
+        int "I2S MCLK multiple"
+        default 256
+        help
+            MCLK multiple used for the I2S bus. Must match the ES7210
+            template parameter.
+
+    config MIC_VU_METER_LED_GPIO
+        int "WS2812 data GPIO number"
+        default 38 if IDF_TARGET_ESP32S3
+        default 18
+        help
+            GPIO number connected to the WS2812 data line.
+
+    config MIC_VU_METER_NUM_LEDS
+        int "Number of LEDs in the strip"
+        default 7
+        help
+            Number of WS2812 LEDs connected to the data line.
+
+endmenu

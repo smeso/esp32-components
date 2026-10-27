@@ -1,0 +1,31 @@
+# SPDX-FileCopyrightText: 2025 Salvatore Mesoraca <s.mesoraca16@gmail.com>
+# SPDX-License-Identifier: Apache-2.0
+
+menu "TCA9555 GPIO blink example"
+
+    config GPIO_BLINK_I2C_SDA_GPIO
+        int "I2C SDA GPIO number"
+        default 11
+        help
+            GPIO number connected to the TCA9555 I2C SDA line.
+
+    config GPIO_BLINK_I2C_SCL_GPIO
+        int "I2C SCL GPIO number"
+        default 10
+        help
+            GPIO number connected to the TCA9555 I2C SCL line.
+
+    config GPIO_BLINK_I2C_ADDR
+        int "TCA9555 I2C address"
+        default 32
+        range 32 39
+        help
+            I2C address of the TCA9555 (0x20 = 32 to 0x27 = 39).
+
+    config GPIO_BLINK_I2C_CLK_SPEED
+        int "I2C clock speed (Hz)"
+        default 100000
+        help
+            I2C SCL clock speed in Hz used to talk to the TCA9555.
+
+endmenu

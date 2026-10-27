@@ -1,0 +1,4 @@
+format:
+  line_width: 120
+lint:
+  argument_var_pattern: '[_a-z][a-z0-9_]+'

@@ -1,0 +1,31 @@
+# SPDX-FileCopyrightText: 2025 Salvatore Mesoraca <s.mesoraca16@gmail.com>
+# SPDX-License-Identifier: Apache-2.0
+
+menu "LEDS effects example"
+
+    config EFFECTS_SHOW_NUM_LEDS
+        int "Number of LEDs in the strip"
+        default 7
+        help
+            Number of LEDs the simulated strip has.
+
+    config EFFECTS_SHOW_INTERVAL_MS
+        int "Step interval (ms)"
+        default 100
+        help
+            How long each rotating/bouncing step is shown.
+
+    config EFFECTS_SHOW_TRANSITION_MS
+        int "Transition duration (ms)"
+        default 1000
+        help
+            Duration of the smooth_transition, sun_effect, breathing and
+            deep_color effects.
+
+    config EFFECTS_SHOW_GAP_MS
+        int "Gap between effects (ms)"
+        default 500
+        help
+            Pause between two consecutive effects.
+
+endmenu

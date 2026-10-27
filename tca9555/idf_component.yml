@@ -1,0 +1,13 @@
+version: "1.0.0"
+description: C++ driver for the TCA9555 16-bit I2C GPIO expander with button support
+maintainers:
+  - Salvatore Mesoraca <s.mesoraca16@gmail.com>
+license: "Apache-2.0"
+tags:
+  - gpio
+  - expander
+  - i2c
+  - buttons
+  - cpp
+dependencies:
+  idf: ">=6.0"

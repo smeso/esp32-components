@@ -1,0 +1,2 @@
+# The ws2812 driver throws C++ exceptions.
+CONFIG_COMPILER_CXX_EXCEPTIONS=y

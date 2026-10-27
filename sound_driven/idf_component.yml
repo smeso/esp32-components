@@ -1,0 +1,14 @@
+version: "1.0.0"
+description: Header-only C++ helper that wraps a DAC and reports the amplitude (peak or spectral) of every audio buffer written to it
+maintainers:
+  - Salvatore Mesoraca <s.mesoraca16@gmail.com>
+license: "Apache-2.0"
+tags:
+  - audio
+  - dsp
+  - fft
+  - dac
+  - leds
+  - cpp
+dependencies:
+  idf: ">=6.0"

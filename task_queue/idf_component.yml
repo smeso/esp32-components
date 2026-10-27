@@ -1,0 +1,12 @@
+version: "1.0.0"
+description: Generic task queue that runs posted items on a dedicated FreeRTOS worker task
+maintainers:
+  - Salvatore Mesoraca <s.mesoraca16@gmail.com>
+license: "Apache-2.0"
+tags:
+  - freertos
+  - queue
+  - task
+  - cpp
+dependencies:
+  idf: ">=6.0"
